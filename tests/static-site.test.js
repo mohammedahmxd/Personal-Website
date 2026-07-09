@@ -1,5 +1,5 @@
 const assert = require("node:assert/strict");
-const { readFileSync } = require("node:fs");
+const { existsSync, readFileSync } = require("node:fs");
 const test = require("node:test");
 
 const html = readFileSync("index.html", "utf8");
@@ -160,5 +160,7 @@ test("contact portal uses Mohammed's supplied contact links", () => {
     portalSection,
     /href="https:\/\/github\.com\/mohammedahmxd"/
   );
+  assert.match(portalSection, /href="AIEngineerpdf\.pdf"/);
+  assert.ok(existsSync("AIEngineerpdf.pdf"), "resume PDF should exist");
   assert.doesNotMatch(portalSection, /mailto:hello@example\.com/);
 });
