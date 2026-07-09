@@ -686,6 +686,20 @@ a:focus-visible {
   background: var(--diamond-light);
 }
 
+.badge-repo {
+  color: #ffffff;
+  border-color: #454c56;
+  background: #24292f;
+  text-decoration: none;
+}
+
+.badge-repo:hover,
+.badge-repo:focus-visible {
+  color: var(--diamond-light);
+  border-color: var(--diamond-main);
+  background: #161b22;
+}
+
 .stack-line {
   font-weight: 700;
 }

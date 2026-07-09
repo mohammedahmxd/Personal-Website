@@ -61,6 +61,22 @@ test("projects section contains all six project saves", () => {
   assert.doesNotMatch(projectsSection, /Request details/);
 });
 
+test("project repository blocks link to the supplied GitHub repositories", () => {
+  const repositories = [
+    "https://github.com/MattMoga/Cypress",
+    "https://github.com/mohammedahmxd/workout-together",
+    "https://github.com/RohanRamchandani/Skin-Infection-Detector",
+    "https://github.com/mohammedahmxd/HackHive2026",
+    "https://github.com/mohammedahmxd/Uber-Simulator",
+  ];
+
+  for (const repository of repositories) {
+    assert.match(html, new RegExp(`href="${repository}"`));
+  }
+
+  assert.equal((html.match(/class="badge badge-repo"/g) || []).length, 5);
+});
+
 test("projects are not hidden by stylesheet rules", () => {
   assert.doesNotMatch(css, /\.projects-section[^{]*\{[^}]*display:\s*none/i);
   assert.doesNotMatch(css, /\.world-menu[^{]*\{[^}]*display:\s*none/i);
