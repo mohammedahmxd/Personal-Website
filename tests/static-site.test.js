@@ -147,6 +147,12 @@ test("community section features NextGen Collective and its event photo", () => 
   assert.match(communitySection, /As Co-Founder of NextGen Collective/);
   assert.match(communitySection, /src="nextgen-collective-networking\.jpg"/);
   assert.doesNotMatch(communitySection, /src="nextgen-collective-stage\.jpg"/);
+  assert.match(communitySection, /data-count="60">60<\/span>\+/);
+  assert.match(communitySection, /data-count="10">10<\/span>\+/);
+  assert.match(communitySection, /Toronto/);
+  assert.match(communitySection, /Tech Week event/);
+  assert.match(script, /function setupCommunityStats\(\)/);
+  assert.match(script, /requestAnimationFrame\(updateNumbers\)/);
 });
 
 test("contact portal uses Mohammed's supplied contact links", () => {

@@ -132,6 +132,66 @@ function setupMapTracking() {
   targets.forEach((target) => observer.observe(target));
 }
 
+function setupCommunityStats() {
+  const stats = document.querySelector(".community-stats");
+  const numbers = document.querySelectorAll(".stat-number");
+
+  if (!stats || numbers.length === 0) {
+    return;
+  }
+
+  const showFinalValues = () => {
+    numbers.forEach((number) => {
+      number.textContent = number.dataset.count;
+    });
+    stats.classList.add("is-animated");
+  };
+
+  if (
+    !("IntersectionObserver" in window) ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    showFinalValues();
+    return;
+  }
+
+  numbers.forEach((number) => {
+    number.textContent = "0";
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) {
+        return;
+      }
+
+      const startTime = performance.now();
+      const duration = 1100;
+
+      const updateNumbers = (time) => {
+        const progress = Math.min((time - startTime) / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+        numbers.forEach((number) => {
+          const target = Number(number.dataset.count);
+          number.textContent = String(Math.round(target * easedProgress));
+        });
+
+        if (progress < 1) {
+          window.requestAnimationFrame(updateNumbers);
+        }
+      };
+
+      stats.classList.add("is-animated");
+      window.requestAnimationFrame(updateNumbers);
+      observer.disconnect();
+    },
+    { threshold: 0.45 }
+  );
+
+  observer.observe(stats);
+}
+
 themeToggle.addEventListener("click", () => {
   const isDayMode = document.body.classList.toggle("day-mode");
   themeToggle.setAttribute("aria-pressed", String(isDayMode));
@@ -142,3 +202,4 @@ currentYear.textContent = new Date().getFullYear();
 setupSectionObserver();
 setupUnlockObserver();
 setupMapTracking();
+setupCommunityStats();
