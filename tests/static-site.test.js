@@ -115,3 +115,18 @@ test("community section features NextGen Collective and its event photo", () => 
   assert.match(communitySection, /src="nextgen-collective-networking\.jpg"/);
   assert.doesNotMatch(communitySection, /src="nextgen-collective-stage\.jpg"/);
 });
+
+test("contact portal uses Mohammed's supplied contact links", () => {
+  const portalSection = html.slice(sectionIndex("portal"));
+
+  assert.match(portalSection, /href="mailto:m1lakdawala@torontomu\.ca"/);
+  assert.match(
+    portalSection,
+    /href="https:\/\/www\.linkedin\.com\/in\/mohammed-ahmxd"/
+  );
+  assert.match(
+    portalSection,
+    /href="https:\/\/github\.com\/mohammedahmxd"/
+  );
+  assert.doesNotMatch(portalSection, /mailto:hello@example\.com/);
+});
