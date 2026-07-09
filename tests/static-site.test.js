@@ -13,7 +13,6 @@ function sectionIndex(id) {
 test("main sections are in the intended document order", () => {
   const order = [
     "spawn",
-    "world-map",
     "world-description",
     "experience",
     "projects",
@@ -88,19 +87,24 @@ test("projects are not hidden by stylesheet rules", () => {
 });
 
 test("world map links every major portfolio location in order", () => {
-  const mapSection = html.slice(sectionIndex("world-map"), sectionIndex("world-description"));
+  const heroSection = html.slice(sectionIndex("spawn"), sectionIndex("world-description"));
   const destinations = [
-    ["#spawn", "Spawn Point"],
-    ["#experience", "Experience Village"],
-    ["#projects", "Project Mines"],
-    ["#community", "Community Hub"],
-    ["#portal", "Portal"],
+    ["#spawn", "Go to Spawn Point"],
+    ["#experience", "Go to Experience Village"],
+    ["#projects", "Go to Project Mines"],
+    ["#community", "Go to Community Hub"],
+    ["#portal", "Go to Portal"],
   ];
 
   for (const [href, label] of destinations) {
-    assert.match(mapSection, new RegExp(`href="${href}"`));
-    assert.match(mapSection, new RegExp(`<strong>${label}</strong>`));
+    assert.match(heroSection, new RegExp(`href="${href}"`));
+    assert.match(heroSection, new RegExp(`aria-label="${label}"`));
   }
+
+  assert.match(heroSection, /src="ahmed-world-map\.png"/);
+  assert.equal((heroSection.match(/class="map-trigger /g) || []).length, 5);
+  assert.doesNotMatch(html, /id="world-map"/);
+  assert.match(script, /classList\.add\("is-visited"\)/);
 });
 
 test("cards unlock on scroll with a non-observer fallback", () => {

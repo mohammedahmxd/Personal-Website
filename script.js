@@ -87,10 +87,16 @@ function setupUnlockObserver() {
 }
 
 function setupMapTracking() {
-  const locations = document.querySelectorAll(".map-location");
+  const locations = document.querySelectorAll(".map-trigger");
   const targets = [...locations]
     .map((location) => document.querySelector(location.getAttribute("href")))
     .filter(Boolean);
+
+  locations.forEach((location) => {
+    location.addEventListener("click", () => {
+      location.classList.add("is-visited");
+    });
+  });
 
   if (!("IntersectionObserver" in window)) {
     return;
@@ -110,6 +116,7 @@ function setupMapTracking() {
         location.classList.toggle("is-current", isCurrent);
 
         if (isCurrent) {
+          location.classList.add("is-visited");
           location.setAttribute("aria-current", "location");
         } else {
           location.removeAttribute("aria-current");

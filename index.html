@@ -46,7 +46,7 @@
               experiments, and systems I am crafting.
             </p>
             <div class="hero-actions" aria-label="Hero actions">
-              <a class="btn btn-primary" href="#world-map">Enter World</a>
+              <a class="btn btn-primary" href="#world-description">Enter World</a>
               <a class="btn btn-secondary" href="#projects">View Projects</a>
             </div>
             <dl class="world-details" aria-label="World description">
@@ -68,58 +68,66 @@
               </div>
             </dl>
           </div>
-        </div>
-      </section>
 
-      <section
-        class="world-map-section section-reveal"
-        id="world-map"
-        data-achievement="Map Discovered"
-        aria-labelledby="world-map-title"
-      >
-        <div class="container">
-          <div class="wide-heading">
-            <p class="eyebrow">World Map</p>
-            <h2 id="world-map-title">Choose Your Route</h2>
-          </div>
-
-          <nav class="world-map-route" aria-label="Ahmed's World locations">
-            <a class="map-location" href="#spawn" data-map-target="spawn">
-              <span class="map-marker marker-spawn" aria-hidden="true">S</span>
-              <span class="map-copy">
-                <strong>Spawn Point</strong>
-                <small>World entrance</small>
-              </span>
-            </a>
-            <a class="map-location" href="#experience" data-map-target="experience">
-              <span class="map-marker marker-village" aria-hidden="true">E</span>
-              <span class="map-copy">
-                <strong>Experience Village</strong>
-                <small>Roles and growth</small>
-              </span>
-            </a>
-            <a class="map-location" href="#projects" data-map-target="projects">
-              <span class="map-marker marker-mines" aria-hidden="true">P</span>
-              <span class="map-copy">
-                <strong>Project Mines</strong>
-                <small>Shipped builds</small>
-              </span>
-            </a>
-            <a class="map-location" href="#community" data-map-target="community">
-              <span class="map-marker marker-community" aria-hidden="true">C</span>
-              <span class="map-copy">
-                <strong>Community Hub</strong>
-                <small>Events and impact</small>
-              </span>
-            </a>
-            <a class="map-location" href="#portal" data-map-target="portal">
-              <span class="map-marker marker-portal" aria-hidden="true">P</span>
-              <span class="map-copy">
-                <strong>Portal</strong>
-                <small>Contact gateway</small>
-              </span>
-            </a>
-          </nav>
+          <figure class="hero-world-map">
+            <figcaption>Ahmed's World Map</figcaption>
+            <img
+              src="ahmed-world-map.png"
+              alt="Minecraft world map with forests, mountains, desert, ocean, and badlands"
+            />
+            <nav class="map-triggers" aria-label="Ahmed's World locations">
+              <a
+                class="map-trigger trigger-spawn"
+                href="#spawn"
+                data-map-target="spawn"
+                data-label="Spawn Point"
+                aria-label="Go to Spawn Point"
+              >
+                <span aria-hidden="true">S</span>
+                <i aria-hidden="true">✓</i>
+              </a>
+              <a
+                class="map-trigger trigger-experience"
+                href="#experience"
+                data-map-target="experience"
+                data-label="Experience Village"
+                aria-label="Go to Experience Village"
+              >
+                <span aria-hidden="true">E</span>
+                <i aria-hidden="true">✓</i>
+              </a>
+              <a
+                class="map-trigger trigger-projects"
+                href="#projects"
+                data-map-target="projects"
+                data-label="Project Mines"
+                aria-label="Go to Project Mines"
+              >
+                <span aria-hidden="true">P</span>
+                <i aria-hidden="true">✓</i>
+              </a>
+              <a
+                class="map-trigger trigger-community"
+                href="#community"
+                data-map-target="community"
+                data-label="Community Hub"
+                aria-label="Go to Community Hub"
+              >
+                <span aria-hidden="true">C</span>
+                <i aria-hidden="true">✓</i>
+              </a>
+              <a
+                class="map-trigger trigger-portal"
+                href="#portal"
+                data-map-target="portal"
+                data-label="Portal"
+                aria-label="Go to Portal"
+              >
+                <span aria-hidden="true">O</span>
+                <i aria-hidden="true">✓</i>
+              </a>
+            </nav>
+          </figure>
         </div>
       </section>
 
