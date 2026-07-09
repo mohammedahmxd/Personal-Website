@@ -38,12 +38,20 @@ function setupSectionObserver() {
 
         entry.target.classList.add("is-visible");
         showAchievement(entry.target.dataset.achievement);
+        observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.28 }
+    {
+      rootMargin: "0px 0px -10% 0px",
+      threshold: 0.01,
+    }
   );
 
   sections.forEach((section) => observer.observe(section));
+
+  window.setTimeout(() => {
+    sections.forEach((section) => section.classList.add("is-visible"));
+  }, 1800);
 }
 
 themeToggle.addEventListener("click", () => {

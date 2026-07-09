@@ -1069,6 +1069,19 @@ a:focus-visible {
 
   .profile-photo-frame {
     width: min(280px, 100%);
+    margin-top: 20px;
+  }
+
+  .world-section .section-layout {
+    gap: 28px;
+  }
+
+  .description-copy > p {
+    margin-top: 0;
+  }
+
+  .world-notes {
+    margin-top: 28px;
   }
 
   .world-save-icon {

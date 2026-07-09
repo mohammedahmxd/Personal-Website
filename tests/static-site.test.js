@@ -4,6 +4,7 @@ const test = require("node:test");
 
 const html = readFileSync("index.html", "utf8");
 const css = readFileSync("styles.css", "utf8");
+const script = readFileSync("script.js", "utf8");
 
 function sectionIndex(id) {
   return html.indexOf(`id="${id}"`);
@@ -64,6 +65,17 @@ test("projects are not hidden by stylesheet rules", () => {
   assert.doesNotMatch(css, /\.projects-section[^{]*\{[^}]*display:\s*none/i);
   assert.doesNotMatch(css, /\.world-menu[^{]*\{[^}]*display:\s*none/i);
   assert.doesNotMatch(css, /\.world-save-list[^{]*\{[^}]*display:\s*none/i);
+});
+
+test("tall sections reveal on small viewports and have a visibility fallback", () => {
+  assert.match(script, /threshold:\s*0\.01/);
+  assert.match(script, /sections\.forEach\(\(section\) => section\.classList\.add\("is-visible"\)\)/);
+});
+
+test("mobile about layout uses compact explicit spacing", () => {
+  assert.match(css, /\.world-section \.section-layout\s*\{[^}]*gap:\s*28px/s);
+  assert.match(css, /\.description-copy > p\s*\{[^}]*margin-top:\s*0/s);
+  assert.match(css, /\.world-notes\s*\{[^}]*margin-top:\s*28px/s);
 });
 
 test("about section includes the profile photo", () => {
