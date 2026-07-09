@@ -103,7 +103,7 @@ test("about section includes the profile photo", () => {
   assert.match(aboutSection, /alt="Mohammed Ahmed"/);
 });
 
-test("community section features NextGen Collective and both event photos", () => {
+test("community section features NextGen Collective and its event photo", () => {
   const communitySection = html.slice(
     sectionIndex("community"),
     sectionIndex("portal")
@@ -113,5 +113,5 @@ test("community section features NextGen Collective and both event photos", () =
   assert.match(communitySection, /Toronto Tech Week/);
   assert.match(communitySection, /As Co-Founder of NextGen Collective/);
   assert.match(communitySection, /src="nextgen-collective-networking\.jpg"/);
-  assert.match(communitySection, /src="nextgen-collective-stage\.jpg"/);
+  assert.doesNotMatch(communitySection, /src="nextgen-collective-stage\.jpg"/);
 });
