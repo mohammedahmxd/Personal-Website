@@ -355,17 +355,6 @@ a:focus-visible {
   transform: rotate(1deg);
 }
 
-.hero-world-map figcaption {
-  position: absolute;
-  top: -38px;
-  right: 0;
-  color: #ffffff;
-  font-family: var(--font-pixel);
-  font-size: 1rem;
-  font-weight: 800;
-  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.48);
-}
-
 .hero-world-map > img {
   display: block;
   width: 100%;
@@ -1325,12 +1314,6 @@ a:focus-visible {
   .hero-world-map {
     padding: 15px;
     transform: none;
-  }
-
-  .hero-world-map figcaption {
-    top: -34px;
-    left: 0;
-    right: auto;
   }
 
   .map-triggers {
