@@ -46,7 +46,7 @@
               experiments, and systems I am crafting.
             </p>
             <div class="hero-actions" aria-label="Hero actions">
-              <a class="btn btn-primary" href="#world-description">Enter World</a>
+              <a class="btn btn-primary" href="#world-map">Enter World</a>
               <a class="btn btn-secondary" href="#projects">View Projects</a>
             </div>
             <dl class="world-details" aria-label="World description">
@@ -68,6 +68,58 @@
               </div>
             </dl>
           </div>
+        </div>
+      </section>
+
+      <section
+        class="world-map-section section-reveal"
+        id="world-map"
+        data-achievement="Map Discovered"
+        aria-labelledby="world-map-title"
+      >
+        <div class="container">
+          <div class="wide-heading">
+            <p class="eyebrow">World Map</p>
+            <h2 id="world-map-title">Choose Your Route</h2>
+          </div>
+
+          <nav class="world-map-route" aria-label="Ahmed's World locations">
+            <a class="map-location" href="#spawn" data-map-target="spawn">
+              <span class="map-marker marker-spawn" aria-hidden="true">S</span>
+              <span class="map-copy">
+                <strong>Spawn Point</strong>
+                <small>World entrance</small>
+              </span>
+            </a>
+            <a class="map-location" href="#experience" data-map-target="experience">
+              <span class="map-marker marker-village" aria-hidden="true">E</span>
+              <span class="map-copy">
+                <strong>Experience Village</strong>
+                <small>Roles and growth</small>
+              </span>
+            </a>
+            <a class="map-location" href="#projects" data-map-target="projects">
+              <span class="map-marker marker-mines" aria-hidden="true">P</span>
+              <span class="map-copy">
+                <strong>Project Mines</strong>
+                <small>Shipped builds</small>
+              </span>
+            </a>
+            <a class="map-location" href="#community" data-map-target="community">
+              <span class="map-marker marker-community" aria-hidden="true">C</span>
+              <span class="map-copy">
+                <strong>Community Hub</strong>
+                <small>Events and impact</small>
+              </span>
+            </a>
+            <a class="map-location" href="#portal" data-map-target="portal">
+              <span class="map-marker marker-portal" aria-hidden="true">P</span>
+              <span class="map-copy">
+                <strong>Portal</strong>
+                <small>Contact gateway</small>
+              </span>
+            </a>
+          </nav>
         </div>
       </section>
 
@@ -127,7 +179,7 @@
           </div>
 
           <div class="quest-list">
-            <article class="quest-entry">
+            <article class="quest-entry unlock-card">
               <div class="quest-marker" aria-hidden="true"></div>
               <div>
                 <p class="quest-label">Experience</p>
@@ -145,7 +197,7 @@
               </div>
             </article>
 
-            <article class="quest-entry">
+            <article class="quest-entry unlock-card">
               <div class="quest-marker marker-diamond" aria-hidden="true"></div>
               <div>
                 <p class="quest-label">Experience</p>
@@ -166,7 +218,7 @@
               </div>
             </article>
 
-            <article class="quest-entry">
+            <article class="quest-entry unlock-card">
               <div class="quest-marker marker-gold" aria-hidden="true"></div>
               <div>
                 <p class="quest-label">Experience</p>
@@ -211,7 +263,7 @@
               <span>Archive</span>
             </div>
             <div class="world-save-list">
-              <article class="project-card world-save-row">
+              <article class="project-card world-save-row unlock-card">
                 <div class="world-save-icon grass-save" aria-hidden="true"></div>
                 <div class="world-save-copy">
                   <div class="card-kicker">Project Save 01</div>
@@ -235,7 +287,7 @@
                 </div>
               </article>
 
-              <article class="project-card world-save-row">
+              <article class="project-card world-save-row unlock-card">
                 <div class="world-save-icon crafting-save" aria-hidden="true"></div>
                 <div class="world-save-copy">
                   <div class="card-kicker">Project Save 02</div>
@@ -259,7 +311,7 @@
                 </div>
               </article>
 
-              <article class="project-card world-save-row">
+              <article class="project-card world-save-row unlock-card">
                 <div class="world-save-icon stone-save" aria-hidden="true"></div>
                 <div class="world-save-copy">
                   <div class="card-kicker">Project Save 03</div>
@@ -283,7 +335,7 @@
                 </div>
               </article>
 
-              <article class="project-card world-save-row">
+              <article class="project-card world-save-row unlock-card">
                 <div class="world-save-icon grass-save" aria-hidden="true"></div>
                 <div class="world-save-copy">
                   <div class="card-kicker">Project Save 04</div>
@@ -307,7 +359,7 @@
                 </div>
               </article>
 
-              <article class="project-card world-save-row">
+              <article class="project-card world-save-row unlock-card">
                 <div class="world-save-icon crafting-save" aria-hidden="true"></div>
                 <div class="world-save-copy">
                   <div class="card-kicker">Project Save 05</div>
@@ -328,7 +380,7 @@
                 </div>
               </article>
 
-              <article class="project-card world-save-row">
+              <article class="project-card world-save-row unlock-card">
                 <div class="world-save-icon stone-save" aria-hidden="true"></div>
                 <div class="world-save-copy">
                   <div class="card-kicker">Project Save 06</div>
@@ -365,7 +417,7 @@
             <h2>Community</h2>
           </div>
 
-          <article class="community-feature">
+          <article class="community-feature unlock-card">
             <div class="community-gallery">
               <figure class="community-photo community-photo-primary">
                 <img

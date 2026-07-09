@@ -13,6 +13,7 @@ function sectionIndex(id) {
 test("main sections are in the intended document order", () => {
   const order = [
     "spawn",
+    "world-map",
     "world-description",
     "experience",
     "projects",
@@ -50,8 +51,11 @@ test("projects section contains all six project saves", () => {
     assert.match(projectsSection, new RegExp(`<h3>${project}</h3>`));
   }
 
-  const saveCount = (projectsSection.match(/class="project-card world-save-row"/g) || [])
-    .length;
+  const saveCount = (
+    projectsSection.match(
+      /class="project-card world-save-row unlock-card"/g
+    ) || []
+  ).length;
   assert.equal(saveCount, expectedProjects.length);
 
   const saves = [...projectsSection.matchAll(/Project Save (\d{2})/g)].map(
@@ -81,6 +85,30 @@ test("projects are not hidden by stylesheet rules", () => {
   assert.doesNotMatch(css, /\.projects-section[^{]*\{[^}]*display:\s*none/i);
   assert.doesNotMatch(css, /\.world-menu[^{]*\{[^}]*display:\s*none/i);
   assert.doesNotMatch(css, /\.world-save-list[^{]*\{[^}]*display:\s*none/i);
+});
+
+test("world map links every major portfolio location in order", () => {
+  const mapSection = html.slice(sectionIndex("world-map"), sectionIndex("world-description"));
+  const destinations = [
+    ["#spawn", "Spawn Point"],
+    ["#experience", "Experience Village"],
+    ["#projects", "Project Mines"],
+    ["#community", "Community Hub"],
+    ["#portal", "Portal"],
+  ];
+
+  for (const [href, label] of destinations) {
+    assert.match(mapSection, new RegExp(`href="${href}"`));
+    assert.match(mapSection, new RegExp(`<strong>${label}</strong>`));
+  }
+});
+
+test("cards unlock on scroll with a non-observer fallback", () => {
+  assert.match(script, /function setupUnlockObserver\(\)/);
+  assert.match(script, /classList\.add\("is-unlocked"\)/);
+  assert.match(css, /\.reveal-ready \.unlock-card\.is-unlocked/);
+  assert.match(css, /prefers-reduced-motion:\s*reduce/);
+  assert.doesNotMatch(script, /2200/);
 });
 
 test("tall sections reveal on small viewports and have a visibility fallback", () => {
