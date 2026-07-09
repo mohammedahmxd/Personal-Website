@@ -102,6 +102,7 @@ test("world map links every major portfolio location in order", () => {
   }
 
   assert.match(heroSection, /src="ahmed-world-map\.png"/);
+  assert.match(heroSection, /Select a marker to travel\./);
   assert.equal((heroSection.match(/class="map-trigger /g) || []).length, 5);
   assert.doesNotMatch(html, /id="world-map"/);
   assert.match(script, /classList\.add\("is-visited"\)/);

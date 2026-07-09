@@ -364,6 +364,18 @@ a:focus-visible {
   image-rendering: pixelated;
 }
 
+.map-hint {
+  position: absolute;
+  right: 0;
+  bottom: -34px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-pixel);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.44);
+}
+
 .map-triggers {
   position: absolute;
   inset: 22px;
@@ -1314,6 +1326,12 @@ a:focus-visible {
   .hero-world-map {
     padding: 15px;
     transform: none;
+  }
+
+  .map-hint {
+    right: auto;
+    bottom: -32px;
+    left: 0;
   }
 
   .map-triggers {
