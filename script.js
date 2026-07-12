@@ -116,7 +116,6 @@ function setupMapTracking() {
         location.classList.toggle("is-current", isCurrent);
 
         if (isCurrent) {
-          location.classList.add("is-visited");
           location.setAttribute("aria-current", "location");
         } else {
           location.removeAttribute("aria-current");

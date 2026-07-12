@@ -1596,6 +1596,30 @@ a:focus-visible {
     font-size: 0.74rem;
   }
 
+  .community-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .community-stat {
+    min-height: auto;
+    padding: 18px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .community-stat:last-child {
+    border-bottom: 0;
+  }
+
+  .community-stat strong,
+  .community-stat-event strong {
+    font-size: 1.15rem;
+  }
+
+  .community-stat dd {
+    font-size: 0.82rem;
+  }
+
   .quest-entry {
     grid-template-columns: 1fr;
     gap: 12px;

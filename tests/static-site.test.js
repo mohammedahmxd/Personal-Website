@@ -105,7 +105,11 @@ test("world map links every major portfolio location in order", () => {
   assert.match(heroSection, /Select a marker to travel\./);
   assert.equal((heroSection.match(/class="map-trigger /g) || []).length, 5);
   assert.doesNotMatch(html, /id="world-map"/);
-  assert.match(script, /classList\.add\("is-visited"\)/);
+  assert.equal(
+    (script.match(/classList\.add\("is-visited"\)/g) || []).length,
+    1,
+    "visited map markers should only be awarded by direct marker clicks"
+  );
 });
 
 test("cards unlock on scroll with a non-observer fallback", () => {
@@ -153,6 +157,7 @@ test("community section features NextGen Collective and its event photo", () => 
   assert.match(communitySection, /Tech Week event/);
   assert.match(script, /function setupCommunityStats\(\)/);
   assert.match(script, /requestAnimationFrame\(updateNumbers\)/);
+  assert.match(css, /@media \(max-width:\s*640px\)[\s\S]*\.community-stats\s*\{[\s\S]*grid-template-columns:\s*1fr/);
 });
 
 test("contact portal uses Mohammed's supplied contact links", () => {
