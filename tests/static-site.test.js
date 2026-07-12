@@ -132,10 +132,14 @@ test("mobile about layout uses compact explicit spacing", () => {
 });
 
 test("hero cover loads with accessible entrance animations", () => {
+  assert.match(html, /<h1 class="hero-name" aria-label="Ahmed">/);
+  assert.equal((html.match(/<span aria-hidden="true">[Ahmed]<\/span>/g) || []).length, 5);
   assert.match(css, /\.hero\s*\{[^}]*animation:\s*cover-shade-load/s);
-  assert.match(css, /\.hero-name\s*\{[\s\S]*animation-delay:\s*220ms/s);
+  assert.match(css, /\.hero-name span\s*\{[^}]*animation:\s*hero-letter-load/s);
+  assert.match(css, /\.hero-name span:nth-child\(5\)\s*\{[^}]*animation-delay:\s*540ms/s);
   assert.match(css, /\.hero-world-map\s*\{[^}]*animation:\s*map-load-in/s);
   assert.match(css, /@keyframes cover-text-load/);
+  assert.match(css, /@keyframes hero-letter-load/);
   assert.match(css, /@keyframes map-load-in-flat/);
   assert.match(css, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*\.hero-world-map\s*\{[\s\S]*opacity:\s*1/);
 });
