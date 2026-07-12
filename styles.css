@@ -204,6 +204,7 @@ a:focus-visible {
   overflow: hidden;
   padding: 138px 0 150px;
   background: linear-gradient(90deg, rgba(3, 8, 16, 0.74), rgba(3, 8, 16, 0.32) 60%, rgba(3, 8, 16, 0.08));
+  animation: cover-shade-load 900ms ease-out both;
 }
 
 .day-mode .hero {
@@ -223,6 +224,40 @@ a:focus-visible {
 .hero-copy {
   min-width: 0;
   max-width: 720px;
+}
+
+.hero .eyebrow,
+.hero-name,
+.hero h2,
+.hero-description,
+.hero-actions,
+.world-details {
+  opacity: 0;
+  animation: cover-text-load 640ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.hero .eyebrow {
+  animation-delay: 120ms;
+}
+
+.hero-name {
+  animation-delay: 220ms;
+}
+
+.hero h2 {
+  animation-delay: 380ms;
+}
+
+.hero-description {
+  animation-delay: 500ms;
+}
+
+.hero-actions {
+  animation-delay: 620ms;
+}
+
+.world-details {
+  animation-delay: 740ms;
 }
 
 .eyebrow {
@@ -352,7 +387,9 @@ a:focus-visible {
     10px 10px 0 rgba(0, 0, 0, 0.38),
     inset 0 0 0 5px #ddcfad,
     inset 0 0 0 10px #88785d;
-  transform: rotate(1deg);
+  opacity: 0;
+  transform: translateY(18px) rotate(3deg) scale(0.96);
+  animation: map-load-in 720ms cubic-bezier(0.2, 0.8, 0.2, 1) 560ms both;
 }
 
 .hero-world-map > img {
@@ -1178,6 +1215,67 @@ a:focus-visible {
   }
 }
 
+@keyframes cover-shade-load {
+  from {
+    filter: brightness(0.78) saturate(0.9);
+  }
+
+  to {
+    filter: brightness(1) saturate(1);
+  }
+}
+
+@keyframes cover-text-load {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes map-load-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) rotate(3deg) scale(0.96);
+  }
+
+  72% {
+    opacity: 1;
+    transform: translateY(-4px) rotate(0.4deg) scale(1.01);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(1deg) scale(1);
+  }
+}
+
+@keyframes map-load-in-flat {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  72% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .site-footer {
   padding: 24px 0 34px;
   background: #0a0f14;
@@ -1406,6 +1504,7 @@ a:focus-visible {
   .hero-world-map {
     padding: 15px;
     transform: none;
+    animation-name: map-load-in-flat;
   }
 
   .map-hint {
@@ -1650,6 +1749,19 @@ a:focus-visible {
   .reveal-ready .unlock-card,
   .unlock-card {
     opacity: 1;
+    transform: none;
+  }
+
+  .hero,
+  .hero .eyebrow,
+  .hero-name,
+  .hero h2,
+  .hero-description,
+  .hero-actions,
+  .world-details,
+  .hero-world-map {
+    opacity: 1;
+    filter: none;
     transform: none;
   }
 

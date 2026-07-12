@@ -131,6 +131,15 @@ test("mobile about layout uses compact explicit spacing", () => {
   assert.match(css, /\.world-notes\s*\{[^}]*margin-top:\s*28px/s);
 });
 
+test("hero cover loads with accessible entrance animations", () => {
+  assert.match(css, /\.hero\s*\{[^}]*animation:\s*cover-shade-load/s);
+  assert.match(css, /\.hero-name\s*\{[\s\S]*animation-delay:\s*220ms/s);
+  assert.match(css, /\.hero-world-map\s*\{[^}]*animation:\s*map-load-in/s);
+  assert.match(css, /@keyframes cover-text-load/);
+  assert.match(css, /@keyframes map-load-in-flat/);
+  assert.match(css, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*\.hero-world-map\s*\{[\s\S]*opacity:\s*1/);
+});
+
 test("about section includes the profile photo", () => {
   const aboutSection = html.slice(sectionIndex("world-description"), sectionIndex("experience"));
   assert.match(
